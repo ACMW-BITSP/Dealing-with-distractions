@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: url('/static/images/bg.png');
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -10em;
+  padding-bottom: 30px;
+}
+
+.footer, .push {
+  height: 10em;
+}
+
+.footer-inner.segment {
+  padding: 5em 0em;
+  background-color: #000000 !important;
+}
+
+.navbar {
+  margin-bottom: 6em;
+}
+
+.padded-div {
+  padding-left: 30px;
+  padding-right: 30px;
+}

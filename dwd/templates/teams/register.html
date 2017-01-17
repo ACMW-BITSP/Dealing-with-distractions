@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="ui centered grid">
+  <div class="six wide computer eight wide tablet column">
+
+  <h2>Register your team</h2>
+
+<form class="ui large form {% if team_form.errors %}error{% endif %}" method="post" action="{% url 'teams:register' %}">
+{% csrf_token %}
+
+  <div class="ui segment">
+  {% for field in team_form %}
+    {% if field.errors %}
+      <div class="field error">
+        {{ field.label_tag }}
+        <span style="font-size:10px;">{{ field.errors.as_text }}</span>
+        {{ field }}
+      </div>
+    {% else %}
+      <div class="field">
+        {{ field.label_tag }}
+        {{ field }}
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% for form in team_member_formset %}
+    <h5>Member {{ forloop.counter }}</h5>
+    
+    {% for field in form %}
+      {% if field.errors %}
+        <div class="field error">
+          {{ field.label_tag }}
+          <span style="font-size:10px;">{{ field.errors.as_text }}</span>
+          {{ field }}
+        </div>
+      {% else %}
+        <div class="field">
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+    <div class="field">
+      <button class="ui submit button" type="submit">Register</button>
+    </div>
+  </div>
+
+  {{ team_member_formset.management_form }}
+
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}

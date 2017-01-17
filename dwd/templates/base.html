@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Dealing with distractions</title>
+
+    {% block stylesheets %}{% endblock %}
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        {% include 'navbar.html' %}
+      </div>
+      <div>
+        {% block content %}{% endblock %}
+      </div>
+
+      <div class="push"></div>
+    </div>
+
+    {% if request.path != '/' %}
+      <div class="footer">
+        {% include 'footer.html' %}
+      </div>
+    {% endif %}
+
+    <script type="text/javascript" src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'lib/semantic/dist/semantic.min.js' %}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="ui container">
+  <div class="ui two column stackable grid">
+    <div class="column">
+      <div class="ui segment">
+        <div class="ui divided selection list">
+        {% for question_no, status in status_dict.items %}
+          <a class="item" href="{% url 'coding:challenge' question_no=question_no %}">
+            Challenge {{ question_no }}
+            {% if status == 'S' %}
+              <div class="ui green horizontal label right floated">Solved</div>
+            {% elif status == 'PS' %}
+              <div class="ui olive horizontal label right floated">Partially Solved</div>
+            {% elif status == 'U' %}
+              <div class="ui grey horizontal label right floated">Unattempted</div>
+            {% endif %}
+          </a>
+        {% empty %}
+          <h2>No information to display.</h2>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="ui segment">
+        <h2 class="ui grey header">Instructions</h2>
+        <ul class="ui list">
+          <li>Some instruction 1</li>
+          <li>Some instruction 2</li>
+        </ul>
+      </div>
+    {% if is_time_over %}
+      <div class="ui inverted segment">
+        <h2 class="ui red header center aligned">You've run out of time.</h2>
+      </div>
+    {% else %}
+      <a class="ui primary button huge" href="{% url 'coding:challenge' question_no=1 %}">Enter Arena</a>
+    {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

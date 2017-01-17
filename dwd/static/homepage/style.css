@@ -1,0 +1,17 @@
+body {
+  background: #000000;
+}
+
+.hash-container {
+  text-align: center;
+  min-height: 500px;
+}
+
+.hash {
+  color: #ffffff;
+  font-size: 400px;
+  font-weight: 700;
+  line-height: 1.2857em;
+  position: fixed;
+  left: 43%;
+}
